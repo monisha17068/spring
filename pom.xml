@@ -18,12 +18,6 @@
 		<java.version>1.8</java.version>
 	</properties>
 	
-	<plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-checkstyle-plugin</artifactId>
-    
-</plugin>
-	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
