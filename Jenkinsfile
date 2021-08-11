@@ -35,7 +35,7 @@ pipeline {
            
    sh "mvn sonar:sonar \
   -Dsonar.projectKey=spring \
-  -Dsonar.host.url=http://34.93.225.134:9000 \
+  -Dsonar.host.url=http://35.244.12.68 \
   -Dsonar.login=2e950c5acae24d8f24bf8f8fbf8c293482fe771c  "
  
          }
