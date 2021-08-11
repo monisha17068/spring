@@ -4,7 +4,11 @@ pipeline {
      environment
     {
     PATH="/usr/share/maven:$PATH"
-        
+    NEXUS_VERSION = "nexus3"
+    NEXUS_PROTOCOL = "http"
+    NEXUS_URL = "34.93.225.134"
+    NEXUS_REPOSITORY = "spring"
+    NEXUS_CREDENTIAL_ID = "nexus-credentials"    
    
     }
     
