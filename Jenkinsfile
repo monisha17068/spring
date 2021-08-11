@@ -47,13 +47,7 @@ pipeline {
             }
 
         }
-        stage('docker') {
-            steps {
-                
-           sh 'docker build -t springboot:1.2 .'
-           sh 'docker run -d -p 8089:8080 springboot:1.2'
-        }
-    }
+       
 
         stage("Publish to Nexus Repository Manager") {
 
@@ -107,6 +101,13 @@ pipeline {
                 }
 
             }
+         stage('docker') {
+            steps {
+                
+           sh 'docker build -t springboot:1.2 .'
+           sh 'docker run -d -p 8089:8080 springboot:1.2'
+        }
+    }
 
         }
 
