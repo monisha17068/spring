@@ -26,16 +26,23 @@ pipeline {
             }
 
         }
+         stage("sonar") {
+
+            steps {
+       sh' mvn sonar:sonar \
+  -Dsonar.projectKey=springspring \
+  -Dsonar.host.url=http://35.244.12.68:9000 \
+  -Dsonar.login=0c83f3b000ac185efdf341d127fc6ef2b7c57408 '
+            }
+         }
 
         stage("Maven Build") {
 
             steps {
 
-                script {
+                  sh "mvn package -DskipTests=true"
 
-                    sh "mvn package -DskipTests=true"
-
-                }
+                
 
             }
 
@@ -87,6 +94,15 @@ pipeline {
                         error "*** File: ${artifactPath}, could not be found";
                     }
                 }
+                
+                stage('docker') {
+            steps {
+                
+           sh 'docker build -t springboot:1.2 .'
+           sh 'docker run -d -p 8089:8080 springboot:1.2'
+        }
+    }
+                
             }
         
                        
