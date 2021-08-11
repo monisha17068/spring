@@ -25,69 +25,75 @@ pipeline {
            sh 'mvn clean install -DskipTests'
         }
     }
-      stage('sonar') 
-          {
-    
-        steps
-     {
-        
-   withSonarQubeEnv('sonarqube') {
-           
-   sh 'mvn sonar:sonar \
-  -Dsonar.projectKey=springapp \
-  -Dsonar.host.url=http://35.244.12.68:9000 \
-  -Dsonar.login=7874cae170437d05a5cfbaacd1d4e04da8e53fb9 '
- 
-         }
-        
-         }
-         }
-          stage("publish to nexus") {
+      
+           stage("Publish to Nexus Repository Manager") {
+31
             steps {
+32
                 script {
-                
-                pom = readMavenPom file: "pom.xml";
-                     
+33
+                    pom = readMavenPom file: "pom.xml";
+34
                     filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
-                    
+35
                     echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
-                   
+36
                     artifactPath = filesByGlob[0].path;
-                   
+37
                     artifactExists = fileExists artifactPath;
-
+38
                     if(artifactExists) {
+39
                         echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
-
+40
                         nexusArtifactUploader(
+41
                             nexusVersion: NEXUS_VERSION,
+42
                             protocol: NEXUS_PROTOCOL,
+43
                             nexusUrl: NEXUS_URL,
+44
                             groupId: pom.groupId,
+45
                             version: pom.version,
+46
                             repository: NEXUS_REPOSITORY,
+47
                             credentialsId: NEXUS_CREDENTIAL_ID,
+48
                             artifacts: [
-                                
+49
                                 [artifactId: pom.artifactId,
+50
                                 classifier: '',
+51
                                 file: artifactPath,
+52
                                 type: pom.packaging],
-
-                                
+53
                                 [artifactId: pom.artifactId,
+54
                                 classifier: '',
+55
                                 file: "pom.xml",
+56
                                 type: "pom"]
+57
                             ]
+58
                         );
-
+59
                     } else {
+60
                         error "*** File: ${artifactPath}, could not be found";
+61
                     }
+62
                 }
+63
             }
-        }
+           }
     stage('docker') {
             steps {
                 
