@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-
-        label "main"
-
-    }
+    agent any
 
     
 
