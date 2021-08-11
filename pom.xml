@@ -55,6 +55,20 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<repositories>
+    <repository>
+        <id>central</id>
+        <url>http://35.244.12.68:8081/</url>
+        <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+        </snapshots>
+        <releases>
+            <enabled>true</enabled>
+            <updatePolicy>daily</updatePolicy>
+        </releases>
+    </repository>
+</repositories>
 	</build>
 
 </project>
