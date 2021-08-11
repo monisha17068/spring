@@ -42,15 +42,7 @@ pipeline {
         
          }
          }
-         
-    stage('docker') {
-            steps {
-                
-           sh 'docker build -t springboot:1.2 .'
-           sh 'docker run -d -p 8089:8080 springboot:1.2'
-        }
-    }
-   stage("publish to nexus") {
+          stage("publish to nexus") {
             steps {
                 script {
                 
@@ -96,6 +88,14 @@ pipeline {
                 }
             }
         }
+    stage('docker') {
+            steps {
+                
+           sh 'docker build -t springboot:1.2 .'
+           sh 'docker run -d -p 8089:8080 springboot:1.2'
+        }
+    }
+  
     }
     post {
         always {
