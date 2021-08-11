@@ -18,6 +18,19 @@
 		<java.version>1.8</java.version>
 	</properties>
 	
+	<distributionManagement>
+    <repository>
+    <id>releases</id>
+    <name>releases</name>
+    <url>http://35.244.12.68:8081/#admin/repository/repositories:spring/releases/</url>
+   </repository>
+    <snapshotRepository>
+    <id>snapshots</id>
+    <name>snapshots</name>
+    <url>http://35.244.12.68:8081/#admin/repository/repositories:spring/snapshots/</url>
+    </snapshotRepository>
+      </distributionManagement>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
