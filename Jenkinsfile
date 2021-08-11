@@ -72,47 +72,32 @@ pipeline {
                     if(artifactExists) {
 39
                         echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
-40
-                        nexusArtifactUploader(
-41
-                           
-                           nexusversion:NEXUS_VERSION,
-                            
+
+                       nexusArtifactUploader(
+                            nexusVersion: NEXUS_VERSION,
                             protocol: NEXUS_PROTOCOL,
-43
                             nexusUrl: NEXUS_URL,
-44
                             groupId: pom.groupId,
-45
                             version: pom.version,
-46
                             repository: NEXUS_REPOSITORY,
-47
                             credentialsId: NEXUS_CREDENTIAL_ID,
-48
                             artifacts: [
-49
+                                // Artifact generated such as .jar, .ear and .war files.
                                 [artifactId: pom.artifactId,
-50
                                 classifier: '',
-51
                                 file: artifactPath,
-52
                                 type: pom.packaging],
-53
+
+                                // Lets upload the pom.xml file for additional information for Transitive dependencies
                                 [artifactId: pom.artifactId,
-54
                                 classifier: '',
-55
                                 file: "pom.xml",
-56
                                 type: "pom"]
-57
                             ]
-58
                         );
-59
-                    } else {
+
+                    } 
+                        else {
 60
                         error "*** File: ${artifactPath}, could not be found";
 61
