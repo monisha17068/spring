@@ -25,11 +25,7 @@ pipeline {
 
             steps {
 
-                script {
-
-                    git 'https://github.com/monisha17068/spring';
-
-                }
+               git branch: 'main', credentialsId: '28a05ef9-3b3c-4466-847a-0a6a0edce8b5', url: 'https://github.com/monisha17068/spring.git'
 
             }
 
