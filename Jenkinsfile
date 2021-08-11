@@ -33,10 +33,10 @@ pipeline {
         
    withSonarQubeEnv('sonarqube') {
            
-   sh "mvn sonar:sonar \
-  -Dsonar.projectKey=spring \
-  -Dsonar.host.url=http://35.244.12.68 \
-  -Dsonar.login=2e950c5acae24d8f24bf8f8fbf8c293482fe771c  "
+   sh 'mvn sonar:sonar \
+  -Dsonar.projectKey=springapp \
+  -Dsonar.host.url=http://35.244.12.68:9000 \
+  -Dsonar.login=7874cae170437d05a5cfbaacd1d4e04da8e53fb9 '
  
          }
         
