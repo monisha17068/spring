@@ -9,6 +9,7 @@ pipeline {
 8
     environment {
         
+         PATH="/usr/share/maven:$PATH"
 
         NEXUS_VERSION = "nexus3"
 10
