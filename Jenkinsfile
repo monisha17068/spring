@@ -76,7 +76,8 @@ pipeline {
                         nexusArtifactUploader(
 41
                            
-                           
+                           nexusversion:NEXUS_VERSION,
+                            
                             protocol: NEXUS_PROTOCOL,
 43
                             nexusUrl: NEXUS_URL,
