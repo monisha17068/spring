@@ -55,19 +55,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<distributionManagement>
-        <repository>
-            <id>my_repo</id>
-            <name>spring</name>
-            <url>"34.93.225.134:8081"</url>
-            <layout>default</layout>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>Snapshots</name>
-            <url><my_url_to_my_snapshot_repo></url>
-        </snapshotRepository>
-    </distributionManagement>
+		
 	</build>
 
 </project>
