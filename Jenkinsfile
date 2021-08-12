@@ -30,9 +30,9 @@ pipeline {
 
             steps {
        sh' mvn sonar:sonar \
-  -Dsonar.projectKey=springspring \
-  -Dsonar.host.url=http://35.244.12.68:9000 \
-  -Dsonar.login=0c83f3b000ac185efdf341d127fc6ef2b7c57408 '
+  -Dsonar.projectKey=springnew \
+  -Dsonar.host.url=http://34.93.225.134:9000 \
+  -Dsonar.login=ce8b3b76b85bb42ef26c8e8fd9de8907a082819a '
             }
          }
 
